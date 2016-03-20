@@ -300,5 +300,4 @@ class tokenizer():
             text = self.splitsenir1.sub(r' \1\n\2', text)
             text = self.splitsenir2.sub(r' \1 \2\n', text)
 
-        text = text.encode('utf-8')
-        return text
+        return map(lambda x: x.split(), text.split(u'\n'))
