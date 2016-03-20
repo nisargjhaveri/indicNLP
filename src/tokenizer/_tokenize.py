@@ -110,10 +110,10 @@ class tokenizer():
         self.restoredviram = re.compile(r'__(DGVM)(\1*)MULTI__')
 
         self.splitsenir1 = re.compile(
-            u' ([|.!?\u0964\u0965]+) ([\u0900-\u0d7f\u201c\u2018A-Z])'
+            u' ([|.!?\u0964\u0965]) ([\u0900-\u0d7f\u201c\u2018A-Z])'
         )
         self.splitsenir2 = re.compile(
-            u' ([|.!?\u0964\u0965]+) ([\)\}\]\'"\u2019\u201d> ]+) '
+            u' ([|.!?\u0964\u0965]) ([\)\}\]\'"\u2019\u201d> ]+) '
         )
 
     def normalize(self, text):
