@@ -1,2 +1,5 @@
 *.pyc
 *.swp
+
+# Don't add datasets
+src/datasets/data
