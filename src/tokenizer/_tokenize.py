@@ -171,6 +171,8 @@ class tokenizer():
         # seperate out all "other" ASCII special characters
         text = self.specascii.sub(r' \1 ', text)
 
+        # TODO: Handle conversion between VISARGA and :
+
         # keep multiple dots together
         text = self.multidot.sub(
             lambda m: r' __%sMULTI__ ' % ('DOT' * len(m.group(1))),
