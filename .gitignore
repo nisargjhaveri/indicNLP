@@ -3,3 +3,6 @@
 
 # Don't add datasets
 src/datasets/data
+
+# Don't add POS models
+src/pos_tagger/data
