@@ -3,7 +3,7 @@
 
 import unittest
 
-from tokenizer import tokenizer
+from ..tokenizer import tokenizer
 
 
 class TestGujTokenizer(unittest.TestCase):

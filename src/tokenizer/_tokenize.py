@@ -4,7 +4,7 @@
 import re
 import os.path
 
-from common import script_utils
+from ..common import script_utils
 
 
 class tokenizer():
