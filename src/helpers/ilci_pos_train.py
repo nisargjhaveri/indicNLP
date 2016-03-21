@@ -7,7 +7,7 @@ from ..common.fscore import print_report
 
 
 def extract_features(tokens, i):
-    return tokens[i]
+    return [tokens[i]]
 
 
 def train(lang, domain, model_name):
