@@ -5,4 +5,5 @@ from . import datasets
 from . import common
 from .tokenizer import tokenizer
 from .stopwords import stopwords
+from .stemmer import stemmer
 from .pos_tagger import pos_tagger
