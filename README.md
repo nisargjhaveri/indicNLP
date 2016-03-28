@@ -6,9 +6,9 @@ Current plan is to implement the following modules
 
 - [x] Sentence Breaker and Tokenizer
 - [x] Stop word detection and removal
-- [ ] Stemmer
+- [x] Stemmer
 - [x] POS tagger
-- [ ] Variation identifier (same word written - slightly differently)
+- [x] Variation identifier (same word written - slightly differently)
 - [ ] Named Entity Recognition
 - [ ] Document classification
 
