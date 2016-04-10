@@ -34,10 +34,14 @@ def print_report(data, correct='correct',
         fscore = 2 * precision * recall / float(precision + recall) \
             if precision + recall else 0
 
-        print '%15s\t%.2f\t%.2f\t%.2f\t%d' % (classname, precision,
-                                              recall, fscore,
+        print '%15s\t%.2f\t%.2f\t%.2f\t%d' % (classname, precision * 100,
+                                              recall * 100, fscore * 100,
                                               data[classname][total_in_gold])
 
     print '%d out of %d (%.2f%%)' % (summary['correct'],
                                      summary['total'],
-                                     summary['correct'] / float(summary['total']))
+                                     (
+                                      summary['correct'] * 100 /
+                                      float(summary['total'])
+                                      )
+                                     )

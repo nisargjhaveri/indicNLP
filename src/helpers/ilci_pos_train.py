@@ -6,8 +6,20 @@ from ..datasets import ilci_corpus
 from ..common.fscore import print_report
 
 
+def get_model_name():
+    return "words_i_pre_suf_3"
+
+
 def extract_features(tokens, i):
-    return [tokens[i]]
+    return [tokens[i],
+            'i_' + str(i),
+            'pre_' + tokens[i][:1],
+            'pre_' + tokens[i][:2],
+            'pre_' + tokens[i][:3],
+            'suf_' + tokens[i][-1:],
+            'suf_' + tokens[i][-2:],
+            'suf_' + tokens[i][-3:]
+            ]
 
 
 def train(lang, domain, model_name):
@@ -24,8 +36,6 @@ def train(lang, domain, model_name):
     pos = pos_tagger(lang, '%s_ilci_%s' % (domain, model_name),
                      extract_features)
     pos.train(train_set)
-
-    evaluate(lang, domain, model_name)
 
 
 def evaluate(lang, domain, model_name):
@@ -71,3 +81,13 @@ def evaluate(lang, domain, model_name):
                     result_matrix[token[1]]['correct'] += 1
 
         print_report(result_matrix)
+
+
+def run_all(lang):
+    model_name = get_model_name()
+
+    train(lang, 'health', model_name)
+    train(lang, 'tourism', model_name)
+
+    evaluate(lang, 'health', model_name)
+    evaluate(lang, 'tourism', model_name)

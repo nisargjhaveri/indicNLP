@@ -3,6 +3,7 @@
 
 from . import datasets
 from . import common
+from . import helpers
 from .tokenizer import tokenizer
 from .stopwords import stopwords
 from .stemmer import stemmer
