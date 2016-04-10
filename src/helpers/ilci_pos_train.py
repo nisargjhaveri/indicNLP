@@ -7,22 +7,20 @@ from ..common.fscore import print_report
 
 
 def get_model_name():
-    return "words_i_pre_suf_3_context_2"
+    return "words_i_pre_suf_3_len_relpos"
 
 
 def extract_features(tokens, i):
     return set([tokens[i],
-                'i_' + str(i),
+                'pos_' + str(i),
+                'relpos_' + str(int(i * 10 / len(tokens))),
+                'len_' + str(len(tokens[i])),
                 'pre_' + tokens[i][:1],
                 'pre_' + tokens[i][:2],
                 'pre_' + tokens[i][:3],
                 'suf_' + tokens[i][-1:],
                 'suf_' + tokens[i][-2:],
                 'suf_' + tokens[i][-3:],
-                '-1_' + tokens[i - 1] if i >= 1 else 'start'
-                '-2_' + tokens[i - 2] if i >= 2 else 'start'
-                '+1_' + tokens[i + 1] if i + 1 < len(tokens) else 'end'
-                '+2_' + tokens[i - 2] if i + 2 < len(tokens) else 'end'
                 ])
 
 
