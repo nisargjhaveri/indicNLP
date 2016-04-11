@@ -21,7 +21,7 @@ class ILCI_MonoCorpus:
         self.load_file()
 
     def load_file(self):
-        datapath = os.path.join(os.path.dirname(__file__), 'data')
+        datapath = os.path.join(os.path.dirname(__file__), 'data', 'ilci')
         filename = '_'.join([self.lang, self.domain, 'all_ilci.mono'])
         self.datafile = open(os.path.join(datapath, filename))
 
