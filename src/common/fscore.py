@@ -16,12 +16,14 @@ def print_report(data, correct='correct',
 
     summary = {
         'correct': 0,
-        'total': 0
+        'total_tagged': 0,
+        'total_in_gold': 0
     }
 
     for classname in data:
         summary['correct'] += data[classname][correct]
-        summary['total'] += data[classname][total_tagged]
+        summary['total_tagged'] += data[classname][total_tagged]
+        summary['total_in_gold'] += data[classname][total_in_gold]
 
         precision = data[classname][correct] / \
             float(data[classname][total_tagged]) \
@@ -38,10 +40,16 @@ def print_report(data, correct='correct',
                                               recall * 100, fscore * 100,
                                               data[classname][total_in_gold])
 
-    print '%d out of %d (%.2f%%)' % (summary['correct'],
-                                     summary['total'],
-                                     (
-                                      summary['correct'] * 100 /
-                                      float(summary['total'])
-                                      )
-                                     )
+    precision = summary['correct'] / float(summary['total_tagged']) \
+        if summary['total_tagged'] else 0
+    recall = summary['correct'] / float(summary['total_in_gold']) \
+        if summary['total_in_gold'] else 0
+    fscore = 2 * precision * recall / float(precision + recall) \
+        if precision + recall else 0
+
+    print 'F-score: %.2f%% (precision: %.2f%%, recall: %.2f%%)'\
+        % (
+            fscore * 100,
+            precision * 100,
+            recall * 100
+        )
