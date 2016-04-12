@@ -4,6 +4,8 @@
 import os.path
 import cPickle
 
+from ._punctuations import is_punctuation
+
 
 class stopwords:
     def __init__(self, lang):
@@ -27,11 +29,15 @@ class stopwords:
             return
 
         self._stopwords = cPickle.load(list_file)
+        list_file.close()
 
     def train(self, words, top_k=50):
         word_list = {}
 
         for word in words:
+            if is_punctuation(word):
+                continue
+
             if word not in word_list:
                 word_list[word] = 0
 
@@ -45,6 +51,8 @@ class stopwords:
 
         list_file = self._get_list_file('wb')
         cPickle.dump(stopwords, list_file, 2)
+        list_file.close()
+
         self._load_list_file()
 
     def inspect(self):
@@ -65,7 +73,10 @@ class stopwords:
         clean_sentences = []
         for sent in sentences:
             clean_sentences.append(
-                [token for token in sent if token not in self._stopwords]
+                [token
+                    for token in sent if
+                    token not in self._stopwords and
+                    not is_punctuation(token)]
             )
 
         return clean_sentences
