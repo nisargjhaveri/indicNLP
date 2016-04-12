@@ -1,0 +1,6 @@
+language: python
+install:
+    - pip install python-crfsuite flake8
+script:
+    - flake8 indicNLP
+    - python indicNLP
