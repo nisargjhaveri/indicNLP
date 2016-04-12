@@ -2,10 +2,10 @@
 *.swp
 
 # Don't add datasets
-src/datasets/data
+indicNLP/datasets/data
 
 # Don't add POS models
-src/pos_tagger/data
+indicNLP/pos_tagger/data
 
 # Don't add classification models
-src/classifier/data
+indicNLP/classifier/data
