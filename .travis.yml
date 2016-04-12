@@ -4,6 +4,6 @@ install:
     - pip install coveralls
 script:
     - flake8 indicNLP
-    - coverage run --source=indicNLP indicNLP
+    - coverage run --source=indicNLP --omit=indicNLP/tests/\* indicNLP
 after_success:
   coveralls
