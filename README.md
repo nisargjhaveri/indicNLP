@@ -10,7 +10,7 @@ Current plan is to implement the following modules
 - [x] POS tagger
 - [x] Variation identifier (same word written - slightly differently)
 - [ ] Named Entity Recognition
-- [ ] Document classification
+- [x] Document classification
 
 
 ## Dependencies
