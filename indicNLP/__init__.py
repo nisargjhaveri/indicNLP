@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+# flake8: noqa
+
 from . import datasets
 from . import common
 from . import helpers

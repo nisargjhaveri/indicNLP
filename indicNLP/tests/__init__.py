@@ -3,6 +3,7 @@
 
 import unittest
 import os.path
+import sys
 
 
 def run_all():
@@ -12,4 +13,7 @@ def run_all():
         pattern='*_test.py',
         top_level_dir=os.path.normpath(os.path.join(testdir_path, '..', '..'))
     )
-    unittest.TextTestRunner(verbosity=2).run(suite)
+
+    ecode = not unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()
+
+    sys.exit(ecode)
