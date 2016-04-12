@@ -1,0 +1,9 @@
+language: python
+install:
+    - pip install python-crfsuite flake8
+    - pip install coveralls
+script:
+    - flake8 indicNLP
+    - coverage run --source=indicNLP --omit=indicNLP/tests/\* indicNLP
+after_success:
+  coveralls
