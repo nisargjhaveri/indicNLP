@@ -6,3 +6,6 @@ src/datasets/data
 
 # Don't add POS models
 src/pos_tagger/data
+
+# Don't add classification models
+src/classifier/data
