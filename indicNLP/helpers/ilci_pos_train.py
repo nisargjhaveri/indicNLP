@@ -10,21 +10,12 @@ def get_model_name():
     return "words_i_pre_suf_3_len_relpos"
 
 
-def extract_features(tokens, i):
-    return set([tokens[i],
-                'pos_' + str(i),
-                'relpos_' + str(int(i * 10 / len(tokens))),
-                'len_' + str(len(tokens[i])),
-                'pre_' + tokens[i][:1],
-                'pre_' + tokens[i][:2],
-                'pre_' + tokens[i][:3],
-                'suf_' + tokens[i][-1:],
-                'suf_' + tokens[i][-2:],
-                'suf_' + tokens[i][-3:],
-                ])
+def get_feature_list():
+    return ['token', 'pos', 'relpos', 'lenght', 'prefix:1', 'prefix:2',
+            'prefix:3', 'suffix:1', 'suffix:2', 'suffix:3']
 
 
-def train(lang, domain, model_name):
+def train(lang, domain, model_name, feature_list):
     corpus = ilci_corpus.load(lang, domain)
 
     sentences = []
@@ -35,9 +26,8 @@ def train(lang, domain, model_name):
     # dev_set = sentences[17500:21250]
     # test_set = sentences[21250:]
 
-    pos = pos_tagger(lang, '%s_ilci_%s' % (domain, model_name),
-                     extract_features)
-    pos.train(train_set)
+    pos = pos_tagger(lang, '%s_ilci_%s' % (domain, model_name))
+    pos.train(train_set, feature_list)
 
 
 def evaluate(lang, domain, model_name):
@@ -51,8 +41,7 @@ def evaluate(lang, domain, model_name):
         dev_set = sentences[17500:21250]
         # test_set = sentences[21250:]
 
-        pos = pos_tagger(lang, '%s_ilci_%s' % (domain, model_name),
-                         extract_features)
+        pos = pos_tagger(lang, '%s_ilci_%s' % (domain, model_name))
         tokens = map(lambda x: zip(*x)[0], dev_set)
         pos_tagged = pos.tag(tokens)
 
@@ -87,9 +76,10 @@ def evaluate(lang, domain, model_name):
 
 def run_all(lang):
     model_name = get_model_name()
+    feature_list = get_feature_list()
 
-    train(lang, 'health', model_name)
-    train(lang, 'tourism', model_name)
+    train(lang, 'health', model_name, feature_list)
+    train(lang, 'tourism', model_name, feature_list)
 
     evaluate(lang, 'health', model_name)
     evaluate(lang, 'tourism', model_name)
