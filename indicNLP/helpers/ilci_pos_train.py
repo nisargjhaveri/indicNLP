@@ -7,12 +7,13 @@ from ..common.fscore import print_report
 
 
 def get_model_name():
-    return "words_i_pre_suf_3_len_relpos"
+    return "words_i_pre_3_suf_5_len_relpos_context_2"
 
 
 def get_feature_list():
     return ['token', 'pos', 'relpos', 'lenght', 'prefix:1', 'prefix:2',
-            'prefix:3', 'suffix:1', 'suffix:2', 'suffix:3']
+            'prefix:3', 'suffix:1', 'suffix:2', 'suffix:3', 'suffix:4',
+            'suffix:5', 'context:1', 'context:2', 'context:-1', 'context:-2']
 
 
 def train(lang, domain, model_name, feature_list):
