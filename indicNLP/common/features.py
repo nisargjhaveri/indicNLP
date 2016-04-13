@@ -32,6 +32,6 @@ def context(tokens, i, offset):
     offset = int(offset)
 
     if 0 <= i + offset < len(tokens):
-        return [offset + '_' + tokens[i + offset]]
+        return [str(offset) + '_' + tokens[i + offset]]
 
     return []
