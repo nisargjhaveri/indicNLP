@@ -1,0 +1,6 @@
+{
+  "name": "IndicNLP",
+  "tagline": "A collection of basic text processing modules for Indian languages",
+  "body": "indicNLP is a collection of common tools used in text based natural language processing for Indian Languages. Many Indian Languages are similar in nature with some differences. Most of them share common or similar solutions to NLP and IRE tasks. And hence, a single framework for that.\r\n\r\nIt includes \r\n\r\n- Sentence Breaker and Tokenizer\r\n- Stop word detection and removal\r\n- Stemmer\r\n- POS tagger\r\n- Variation identifier (same word written slightly differently)\r\n- Document classifier\r\n\r\n### Code quality and Quality assurance\r\n\r\n[![Build Status](https://travis-ci.org/nisargjhaveri/indicNLP.svg?branch=master)](https://travis-ci.org/nisargjhaveri/indicNLP)\r\n[![Coverage Status](https://coveralls.io/repos/github/nisargjhaveri/indicNLP/badge.svg?branch=master)](https://coveralls.io/github/nisargjhaveri/indicNLP?branch=master)\r\n\r\n### Dependencies\r\n\r\n- `python-crfsuite`",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
